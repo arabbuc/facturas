@@ -57,8 +57,38 @@ public class ProductoRestController {
     public Optional<Producto> getProducto(
         @PathVariable("id") Long id     //asignamos la variable de path a id
     ){
+        
 
             return pr.findById(id); //devolvemos un solo producto con id igual a la variable de path
+
+    }
+
+
+    /*********************
+     * 
+     * versión que retorna un elemento o
+     * @return
+     */
+    @GetMapping("/p{id}")        //endpoint con una variable de path indicando el id del producto
+    public ModelAndView getProductohtml(
+        @PathVariable("id") Long id     //asignamos la variable de path a id
+    ){
+        ModelAndView modelAndView=new ModelAndView();
+        try {
+            Producto producto = pr.findById(id).get();
+            modelAndView.setViewName("single_product");
+            modelAndView.addObject("producto", producto);
+            return modelAndView;
+
+        } catch (Exception e) {
+            //TODO: handle exception
+            modelAndView.addObject("errormsg", e.getMessage());
+            modelAndView.setViewName("404");
+            return modelAndView;
+        }
+        
+
+             //devolvemos un solo producto con id igual a la variable de path
 
     }
 
