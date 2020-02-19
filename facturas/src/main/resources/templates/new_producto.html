@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo cliente</title>
+    <style>
+        div{
+            width:300px;
+            text-align: right;
+            padding-bottom: 10px;
+            }
+        input{
+            width: 160px;
+            
+            }
+        #enviar{
+            width: 80px;
+            background-color: gray;
+            color: white;
+
+            }
+        table{
+            width: 100%;
+        }
+        th{
+           
+            border: 2px groove rgba(73,108,155,0.87);
+            background-color: gray;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            }
+        td{
+            border-collapse: collapse;
+            text-align: center;
+            border: 1px groove gray;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Nuevo Producto</h1>
+    <p>Introduccir los datos del nuevo cliente</p>
+    <form action="/producto" method="POST">
+        <div>
+        <ul style="list-style: none;">
+            <li>
+                <label>Descripción: <input type="text" name="descripcion"/></label> 
+            </li>
+            <li>
+                <label>Fabricante: <input type="text" name="fabricante"></label>
+            </li>
+            <li>
+                <label>Precio: <input type="text" name="precio"></label>
+            </li>
+        </ul>
+        <input id="enviar" type="submit">
+        </div> 
+        <p th:text="${mensaje}"></p>
+        <div>
+            <table id="list">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Fabricante</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.descripcion}"></td>
+                        <td th:text="${producto.fabricante}"></td>
+                        <td th:text="${producto.precio}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+    </form>
+
+
+    
+</body>
+</html>
