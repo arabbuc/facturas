@@ -28,7 +28,7 @@ public class ProductoController {
         modelAndView.addObject("productos", productoRepository.findAll());
 
         Long total=productoRepository.count();
-        modelAndView.addObject("mensaje", "Toal artículos: "+String.valueOf(total));
+        modelAndView.addObject("mensaje", "Total artículos: "+String.valueOf(total));
 
         
         return modelAndView;
@@ -46,7 +46,7 @@ public class ProductoController {
         modelAndView.addObject("productos", productoRepository.findAll());
 
         Long total=productoRepository.count();
-        modelAndView.addObject("mensaje", "Toal artículos: "+String.valueOf(total));
+        modelAndView.addObject("mensaje", "Total artículos: "+String.valueOf(total));
         
         return modelAndView;
     }

@@ -1,6 +1,7 @@
 package es.cizquierdof.facturas.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import es.cizquierdof.facturas.model.Producto;
 import es.cizquierdof.facturas.repositorio.ProductoRepository;
@@ -16,29 +17,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * ProductoRestController
  */
 
-@RestController
-@RequestMapping(value = "/productos")
+@RestController     //anotamos el controlador como rest controller
+@RequestMapping(value = "/productos")   //endpoint base
 public class ProductoRestController {
 
     @Autowired
-    ProductoRepository pr;
+    ProductoRepository pr;      //activamos el repositorio de productos
 
-    @GetMapping("/")
+    /**************
+     * 
+     * listado de productos en bruto
+     * los devuelve como JSON
+     */
+    @GetMapping("/")        //endpoint parra listado de productos en bruto
     public Iterable<Producto> getAllProductos() {
-        return pr.findAll();
+        return pr.findAll();    //pide al repositorio que devuelva todos los elementos
     }
 
-    @GetMapping("/{id}")
+    /*******************
+     * 
+     * listado de productos como tabla
+     * llena una tabla html con los productos del reposistorio
+     */
+    @GetMapping("/all")     //endpoint para mostrar todos los productos en una tabla html
+    public ModelAndView getAllProductosPage() {
+
+        ModelAndView modelAndView=new ModelAndView("new_producto"); //página que contiene la tabla
+        modelAndView.addObject("productos", pr.findAll());      //añadimos todos los productos a la página
+
+        return modelAndView;    //devolvemois la página al servidor tomcat
+    }
+
+    /***
+     * 
+     * encuentra un solo producto basandose en el id
+     * el id viene como variable de path
+     */
+    @GetMapping("/{id}")        //endpoint con una variable de path indicando el id del producto
     public Optional<Producto> getProducto(
-        @PathVariable("id") Long id
+        @PathVariable("id") Long id     //asignamos la variable de path a id
     ){
-        try {
-            return pr.findById(id);
-        } catch (Exception e) {
-            
-            return null;
-        }
-        
+
+            return pr.findById(id); //devolvemos un solo producto con id igual a la variable de path
+
     }
 
     

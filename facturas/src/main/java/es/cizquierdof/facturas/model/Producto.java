@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Producto
  */
-@Entity 
+@Entity         //anotamos la clase como entidad lo que la conecta con una tabla del mismo nombre
 public class Producto {
 
     @Id 
