@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Producto
@@ -17,9 +18,11 @@ public class Producto {
     private Long id;
 
     @NotNull
+    @Size(min=1)    //no se admiten cadena vacía
     private String descripcion;
 
     @NotNull
+    @Size(min=1)
     private String fabricante;
 
     private Float precio;
@@ -67,6 +70,12 @@ public class Producto {
     }
 
     public Producto() {
+    }
+
+    @Override
+    public String toString() {
+        return "Producto [descripcion=" + descripcion + ", fabricante=" + fabricante + ", id=" + id + ", precio="
+                + precio + "]";
     }
 
 

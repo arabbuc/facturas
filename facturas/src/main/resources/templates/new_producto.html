@@ -6,7 +6,7 @@
     <title>Nuevo producto</title>
     <style>
         div{
-            width:300px;
+            width:400px;
             text-align: right;
             padding-bottom: 10px;
             }
@@ -62,6 +62,7 @@
             <table id="list">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Descripción</th>
                         <th>Fabricante</th>
                         <th>Precio</th>
@@ -69,6 +70,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.id}"></td>
                         <td th:text="${producto.descripcion}"></td>
                         <td th:text="${producto.fabricante}"></td>
                         <td th:text="${producto.precio}"></td>
