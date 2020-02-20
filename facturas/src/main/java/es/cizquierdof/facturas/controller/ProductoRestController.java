@@ -36,27 +36,6 @@ public class ProductoRestController {
         return pr.findAll(); // pide al repositorio que devuelva todos los elementos
     }
 
-    /*******************
-     * 
-     * listado de productos como tabla llena una tabla html con los productos del
-     * reposistorio
-     */
-
-    /*
-     * @GetMapping("/all") // endpoint para mostrar todos los productos en una tabla
-     * html public ModelAndView getAllProductosPage() {
-     * 
-     * ModelAndView modelAndView = new ModelAndView("new_producto"); // página que
-     * contiene la tabla modelAndView.addObject("productos", pr.findAll()); //
-     * añadimos todos los productos a la página
-     * 
-     * return modelAndView; // devolvemos la página al servidor tomcat }
-     */
-    /***
-     * 
-     * encuentra un solo producto basandose en el id el id viene como variable de
-     * path
-     */
     @GetMapping("/{id}/") // endpoint con una variable de path indicando el id del producto
     public Optional<Producto> getProducto(@PathVariable("id") Long id // asignamos la variable de path a id
     ) {
@@ -81,36 +60,5 @@ public class ProductoRestController {
         return p;
 
     }
-
-     /*********************
-     * 
-     * versión que retorna un elemento o
-     * 
-     * @return
-     */
-/*
-    @GetMapping("/p{id}/")
-    public ModelAndView getProductohtml(@PathVariable("id") Long id
-
-    ) {
-
-        ModelAndView modelAndView = new ModelAndView();
-
-        try {
-
-            Producto producto = pr.findById(id).get();
-            modelAndView.setViewName("single_product");
-            modelAndView.addObject("producto", producto.toString());
-
-        } catch (Exception e) {
-
-            modelAndView.addObject("errormsg", e.getMessage());
-            modelAndView.setViewName("404");
-
-        }
-
-        return modelAndView;
-
-    } */
 
 }
