@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuevo producto</title>
-    <style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+    <!--     <style>
         div{
             width:400px;
             text-align: right;
@@ -37,14 +40,31 @@
             border: 1px groove gray;
         }
 
-    </style>
+    </style> -->
+
 </head>
+
 <body>
-    <h1>Nuevo Producto</h1>
-    <p>Introduccir los datos del nuevo producto</p>
-    <form action="/producto" method="POST">
-        <div>
-        <ul style="list-style: none;">
+    
+    <h1 class="ui header" style=" margin-left: 10%;">Nuevo Producto</h1>
+    <p class="ui section divider" style=" margin-left: 10%;">Introduccir los datos del nuevo producto</p>
+    <form action="/producto" method="POST" class="ui form" style="width: 50%; margin-left: 10%;">
+        <div style="width: 60%;">
+        <div class="field">
+            <label>Descripción</label>
+            <input type="text" name="descripcion" placeholder="Descripción">
+        </div>
+        <div class="field">
+            <label>Fabricante</label>
+            <input type="text" name="fabricante" placeholder="Fabricante">
+        </div>
+        <div class="field">
+            <label>Precio</label>
+            <input type="text" name="precio" placeholder="Precio">
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+        </div>
+        <!--         <ul style="list-style: none;">
             <li>
                 <label>Descripción: <input type="text" name="descripcion"/></label> 
             </li>
@@ -55,11 +75,10 @@
                 <label>Precio: <input type="text" name="precio"></label>
             </li>
         </ul>
-        <input id="enviar" type="submit">
-        </div> 
-        <p th:text="${mensaje}"></p>
-        <div>
-            <table id="list">
+        <input id="enviar" type="submit"> -->
+        <p th:text="${mensaje}" class="ui section divider" ></p>
+        <div class="ui divider">
+            <table class="ui selectable inverted table" >
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -77,10 +96,11 @@
                     </tr>
                 </tbody>
             </table>
-        </div>  
+        </div>
     </form>
 
 
-    
+
 </body>
+
 </html>
